@@ -8,7 +8,7 @@ export default function CartItem({cartItem}) {
       <img src={imageUrl} alt={`${name}`} />
         <div className="item-details">
         <span className="name">{name}</span>
-        <span className="price">{quantity}x${price}</span>
+        <span className="price">{quantity}x{price} DT</span>
         </div>
 
     </div>
