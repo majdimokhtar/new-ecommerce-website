@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from './store/store';
 // import { UserProvider } from './contexts/user.context';
 // import { CategoriesProvider } from './contexts/categories.context';
-import { CartProvider } from './contexts/cart.context';
+// import { CartProvider } from './contexts/cart.context';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,9 +17,9 @@ root.render(
     <BrowserRouter>
     {/* <UserProvider> */}
       {/* <CategoriesProvider> */}
-        <CartProvider>
+        {/* <CartProvider> */}
         <App />
-        </CartProvider>
+        {/* </CartProvider> */}
       {/* </CategoriesProvider> */}
     {/* </UserProvider> */}
     </BrowserRouter>
