@@ -70,7 +70,7 @@ export const getCategoriesAndDocuments =async()=>{
   const userDocRef =doc(db , "users" , userAuth.uid)
   console.log(userDocRef);
   const userSnapshot = await getDoc(userDocRef)
-  console.log(userSnapshot.exists());
+  // console.log(userSnapshot.exists());
   //if user data does not exist
   //create/set document with data of user auth inmy collection
   if (!userSnapshot.exists()) {
@@ -89,7 +89,7 @@ export const getCategoriesAndDocuments =async()=>{
   }
     //check if user data exist
     //return user doc ref
-    return userDocRef;
+    return userSnapshot;
   }
 
   export const createAuthUserWithEmailAndPassword = async(email,password)=>{
@@ -107,3 +107,17 @@ export const getCategoriesAndDocuments =async()=>{
   export const SignOutUser =async()=> await signOut(auth)
 
   export const onAuthStateChangedListner =(callback)=> onAuthStateChanged(auth,callback)
+
+
+  export const getCurrentUser =()=>{
+    return new Promise((resolve,reject)=>{
+      const unsubscribe =onAuthStateChanged(
+        auth,
+        (userAuth)=>{
+          unsubscribe();
+          resolve(userAuth)
+        },
+        reject
+      )
+    })
+  }

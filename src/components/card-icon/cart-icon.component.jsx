@@ -1,6 +1,6 @@
 
-import { useContext } from "react";
-import { ReactComponent as ShopIcon } from "../../assets/shopping-bag.svg"
+// import { useContext } from "react";
+// import { ReactComponent as ShopIcon } from "../../assets/shopping-bag.svg"
 // import { CartContext } from "../../contexts/cart.context.jsx";
 import { useDispatch,useSelector } from "react-redux";
 import {selectCartCount,selectCartOpen} from "../../store/cart/cart.selector"
