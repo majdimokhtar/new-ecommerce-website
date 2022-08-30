@@ -10,7 +10,6 @@ import {selectCurrentUser} from "../../store/user/user.selector"
 export default function PaymentForm() {
     const stripe = useStripe()
     const elements=useElements()
-    // eslint-disable-next-line
     const [isProcessingStatement , setIsProcessingStatement ] =useState(false)
     const amount =useSelector(selectCartTotal)
     const currentUser =useSelector(selectCurrentUser)
@@ -54,7 +53,7 @@ export default function PaymentForm() {
         <FormContainer onSubmit={paymentHandler} >
             <h2>Credit Card Payment:</h2>
         <CardElement />
-        <PaymentBtn buttonType={Button_TYPE_CLASS.inverted} >Pay Now</PaymentBtn>
+        <PaymentBtn buttonType={Button_TYPE_CLASS.inverted} isLoading={isProcessingStatement} >Pay Now</PaymentBtn>
         </FormContainer>
     </PaymentFormContainer>
   )
