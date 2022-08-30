@@ -29,19 +29,20 @@ export default function PaymentForm() {
             body :JSON.stringify({amount : amount*100})
         }).then((res)=>{return res.json()})
         console.log(response);
-        const {paymentIntent: {client_secret}} = response
-        console.log(client_secret)
-        const paymentResult = await stripe.confirmAcssDebitPayment(client_secret,{
-          payment_method:{
+        const clientSecret = response.paymentIntent.client_secret;
+
+        console.log(clientSecret)
+        const paymentResult = await stripe.confirmCardPayment(clientSecret,{
+          payment_method: {
             card: elements.getElement(CardElement),
             billing_details:{
-              name: currentUser ? currentUser.displayName : "Majdi"
+              name: currentUser ? currentUser.displayName  : "Majdi Mokhtar"
             }
           }
         })
         setIsProcessingStatement(false)
         if (paymentResult.error) {
-          alert(paymentResult.error)
+          alert(paymentResult.error.message)
         } else{
           if (paymentResult.paymentIntent.status==="succeeded") {
             alert("Payment Successful")
